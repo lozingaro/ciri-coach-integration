@@ -1,13 +1,12 @@
 {
-	"From":"2020-09-18T22:00:00",
-	"To":"2018-09-18T23:00:00",
-	"Series":[
-	{
-		"NodeId":54653,
-		"UnitId":124
-	}
-	],
-	"AggregationFunction":0,
-	"AggregationPeriod":0,
-	"AggregationType":0
+	"From": "2020-09-18T22:00:00",
+	"To": "2018-09-18T23:00:00",
+	"Series": [{
+		"NodeId": 54653,
+		"UnitId": 124
+	}],
+	"AggregationFunction": 0,
+	"AggregationPeriod": 0,
+	"AggregationType": 0
 }
+

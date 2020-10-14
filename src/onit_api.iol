@@ -1,9 +1,10 @@
-type exportByDateRequest: undefined
+type ExportByDateRequest: undefined
 
-type exportByDateResponse: undefined
+type ExportByDateResponse: undefined
 
 interface OnitAPI {
-	RequestResponse: export( exportByDateRequest  )( exportByDateResponse )
+	RequestResponse: 
+		exportByDate( ExportByDateRequest  )( ExportByDateResponse )
 }
 
 

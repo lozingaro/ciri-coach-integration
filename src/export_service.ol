@@ -1,4 +1,8 @@
 include "file.iol"
+include "console.iol"
+include "string_utils.iol"
+include "converter.iol"
+
 include "onit_api.iol"
 
 outputPort Onit {
@@ -11,7 +15,6 @@ outputPort Onit {
 		osc << {
 			export << { alias = "on.energy/Export/ExportByDateTime" method = "post" }
 		}
-		addHeader.header[0] << "Authorization" { value = "basic" + " " + "dW5pYm9fdGVzdDp1bmlib190ZXN0" }
 		addHeader.header[1] << "Accept" { value = "application/json" }
 	}
 	interfaces: OnitAPI
@@ -22,14 +25,19 @@ main {
 	readFile@File( {
 		filename = "../data/exportByDateRequest.json"
 		format = "json"
-	} )( exportByDateReq  )
-	// optional: set the authorization parameters
+	} )( exportByDateRequest )
+	// set the authorization parameters
+	stringToRaw@Converter( "unibo_test:unibo_test" )( authRaw )
+	rawToBase64@Converter( authRaw )( authBase64 )
+	Onit.protocol.addHeader.header[0] << "Authorization" {
+		value = "Basic " + authBase64
+	}
 	// call the export operation
-	exportByDate@Onit( exportbyDateReq )( exportByDateRes )
+	exportByDate@Onit( exportByDateRequest )( exportByDateResponse )
 	// save the output as a json file
 	writeFile@File( {
-		filename = "../test/exportByDateResponse.json"
+		filename = "../test/export_byDate_response.json"
 		format = "json"
-		content << exportByDateRes
+		content << exportByDateResponse
 	} )()
 }
