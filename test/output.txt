@@ -1,0 +1,50 @@
+Oct 07, 2020 4:35:05 PM test.ol
+
+REQUEST
+------------------------------------------------
+
+INFO: [test.ol] [HTTP debug] 
+Sending: POST /on.energy/Export/ExportByDateTime HTTP/1.1
+Host: onenergy.onit.it
+Accept-Encoding: gzip, deflate
+Authorization: basic unibo_test:unibo_test
+MediaTypeWithQuality: application/json
+Content-Type: application/json; charset=utf-8
+Content-Length: 166
+
+--> Message content
+{
+	"AggregationFunction":0,
+	"Series":[{"UnitId":93,"NodeId":190},null],
+	"AggregationPeriod":0,
+	"From":"2020-09-18T22:00:00",
+	"To":"2020-09-18T23:00:00",
+	"AggregationType":0
+}
+
+RESPONSE
+------------------------------------------------
+
+INFO: [test.ol] [HTTP debug] 
+Receiving:
+HTTP Code: 200
+HTTP Method: RESPONSE
+Resource: null
+--> Header properties
+	date: Wed, 07 Oct 2020 14:35:06 GMT
+	server: Microsoft-IIS/8.5
+	content-length: 58
+	x-aspnet-version: 4.0.30319
+	x-powered-by: ASP.NET
+	content-type: application/json; charset=utf-8
+	cache-control: private
+	x-aspnetmvc-version: 5.2
+
+--> Message content
+{
+	"ReturnCode":-2,
+	"Responses":null,
+	"ExceptionMessage":null
+}
+------------------------------------------------
+
