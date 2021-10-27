@@ -1,9 +1,0 @@
-{
-  "msg_from": "CIRI ICT",
-  "dev_id": 2,
-  "dev_desc": "Test Device",
-  "level": 32,
-  "level_unitid": "°C",
-  "pressure": 1.2,
-  "pressure_unitid": "bar"
-}

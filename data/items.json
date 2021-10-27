@@ -1,0 +1,58 @@
+[
+  {
+    "_id": "617905adc05a6d9545e8c886",
+    "index": 0,
+    "msg_from": "CIRI ICT",
+    "dev_id": 24,
+    "dev_desc": "nostrud occaecat cupidatat",
+    "level": 3,
+    "level_unitid": "°C",
+    "pressure": 1.05,
+    "pressure_unitid": "bar",
+    "registered": "2021-10-25T09:47:27 -02:00",
+    "latitude": 44.14976,
+    "longitude": 12.23676
+  },
+  {
+    "_id": "617905ade1ffa4924e881cb8",
+    "index": 1,
+    "msg_from": "CIRI ICT",
+    "dev_id": 83,
+    "dev_desc": "id quis irure",
+    "level": 1,
+    "level_unitid": "°C",
+    "pressure": 0.99,
+    "pressure_unitid": "bar",
+    "registered": "2021-10-03T10:05:39 -02:00",
+    "latitude": 44.14927,
+    "longitude": 12.23567
+  },
+  {
+    "_id": "617905adf58757f878a79256",
+    "index": 2,
+    "msg_from": "CIRI ICT",
+    "dev_id": 88,
+    "dev_desc": "minim dolore id",
+    "level": 36,
+    "level_unitid": "°C",
+    "pressure": 0.92,
+    "pressure_unitid": "bar",
+    "registered": "2021-10-05T03:04:06 -02:00",
+    "latitude": 44.14903,
+    "longitude": 12.23621
+  },
+  {
+    "_id": "617905adb2dacee64245d0a1",
+    "index": 3,
+    "msg_from": "CIRI ICT",
+    "dev_id": 80,
+    "dev_desc": "veniam nisi eu",
+    "level": 27,
+    "level_unitid": "°C",
+    "pressure": 1.23,
+    "pressure_unitid": "bar",
+    "registered": "2021-10-26T03:09:37 -02:00",
+    "latitude": 44.14821,
+    "longitude": 12.23535
+  }
+]

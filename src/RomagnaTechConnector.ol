@@ -16,20 +16,16 @@
  *  Free Software Foundation, Inc.,                                          *
  *  59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.                *
  *                                                                           *
- *  For details about the authors of this software, see the AUTHORS file.    *
+ *  For details about the authors of this software, see the README file.    *
  *****************************************************************************/
- 
-type NotifyRequest: undefined
-type NotifyResponse: undefined
 
-interface RomagnaTechInterface {
-    RequestResponse:
-        notify( NotifyRequest )( NotifyResponse )
-}
-
-from console import Console
 from file import File
-from string_utils import StringUtils
+from time import Time
+
+constants {
+    AUTH_TOKEN = "tdbdeimeu5hw7ei6mo3ugg5e0hvegxlqzvbmreiye5eedqq6xh47hgmxurch7iic",
+    PUSH_EVERY = 30000
+}
 
 service RomagnaTechConnector
 {
@@ -39,32 +35,25 @@ service RomagnaTechConnector
             debug = true
             compression = false
             format = "json"
-            addHeader.header[0] << "Authorization" {
-                value = "Basic tdbdeimeu5hw7ei6mo3ugg5e0hvegxlqzvbmreiye5eedqq6xh47hgmxurch7iic"
-            }
-            osc.notify << {
-                method = "post"
-                alias = "endpoints/636f6e38"
-            }
+            addHeader.header << "Authorization" { value = AUTH_TOKEN }   
+            osc.notify << { alias = "endpoints/636f6e38" method = "post" }
         }
-        interfaces: RomagnaTechInterface
+        OneWay: notify
     }
 
-	embed Console as Console
 	embed File as File
-	embed StringUtils as StringUtils
+    embed Time as Time
 	
 	main
 	{
         readFile@File( {
-            filename = "../data/item0.json"
+            filename = "data/items.json"
             format = "json"
-        } )( data )
+        } )( items )
 
-        notify@RomagnaTech( data )( response )
-
-        // debug print
-        valueToPrettyString@StringUtils( response )( ps )
-        println@Console( ps )()
+        for( item in items._ ) {
+            notify@RomagnaTech( item )
+            sleep@Time( PUSH_EVERY )()
+        }
     }
 }
