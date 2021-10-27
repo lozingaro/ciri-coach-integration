@@ -6,4 +6,4 @@ Lo scopo del progetto è la realizzazione di una Architettura orientata ai Servi
 ## Authors
 
 - [Stefano Zingaro](mailto:stefanopio.zingaro@unibo.it) DISI, University of Bologna
-- [Andrea Giorgetti](mailto:andrea.giorgetti@unibo.it) DISI, University of Bologna
+- [Andrea Giorgetti](mailto:andrea.giorgetti@unibo.it) DEI, University of Bologna
