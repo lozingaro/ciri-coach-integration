@@ -24,7 +24,7 @@ from time import Time
 
 constants {
     AUTH_TOKEN = "tdbdeimeu5hw7ei6mo3ugg5e0hvegxlqzvbmreiye5eedqq6xh47hgmxurch7iic",
-    PUSH_EVERY = 30000
+    PUSH_EVERY = 180000
 }
 
 service RomagnaTechConnector
@@ -32,28 +32,28 @@ service RomagnaTechConnector
     outputPort RomagnaTech {
         location: "socket://romagnatech.resiot.net:443/"
         protocol: https {
-            debug = true
-            compression = false
             format = "json"
             addHeader.header << "Authorization" { value = AUTH_TOKEN }   
-            osc.notify << { alias = "endpoints/636f6e38" method = "post" }
+            osc.push << { alias = "endpoints/636f6e38" method = "post" }
         }
-        OneWay: notify
+        OneWay: push
     }
 
 	embed File as File
     embed Time as Time
-	
+
 	main
 	{
         readFile@File( {
             filename = "data/items.json"
             format = "json"
-        } )( items )
+        } )( data )
 
-        for( item in items._ ) {
-            notify@RomagnaTech( item )
+        for ( item in data._ )
+        {
+            push@RomagnaTech( item )
             sleep@Time( PUSH_EVERY )()
         }
     }
 }
+

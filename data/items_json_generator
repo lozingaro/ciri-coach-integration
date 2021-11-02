@@ -1,5 +1,5 @@
 [
-    '{{repeat(4, 4)}}',
+    '{{repeat(48, 48)}}',
     {
         _id: '{{objectId()}}',
         index: '{{index()}}',
@@ -10,7 +10,7 @@
         level_unitid: '°C',
         pressure: '{{floating(0.8, 1.25, 2, "0.00")}}',
         pressure_unitid: 'bar',
-        timestamp: '{{date(new Date(2021, 9, 2), new Date(), "YYYY-MM-ddThh:mm:ss")}}',
+        timestamp: '{{date(new Date(2021, 10, 1), new Date(), "YYYY-MM-ddThh:mm:ss")}}',
         latitude: '{{floating(44.14801, 44.14999)}}',
         longitude: '{{floating(12.23501, 12.236999)}}'
     }
