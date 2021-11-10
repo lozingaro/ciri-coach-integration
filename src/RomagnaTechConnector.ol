@@ -24,7 +24,7 @@ from time import Time
 
 constants {
     AUTH_TOKEN = "tdbdeimeu5hw7ei6mo3ugg5e0hvegxlqzvbmreiye5eedqq6xh47hgmxurch7iic",
-    PUSH_EVERY = 1000
+    PUSH_EVERY = 5000
 }
 
 service RomagnaTechConnector
