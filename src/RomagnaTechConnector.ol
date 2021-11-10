@@ -24,7 +24,7 @@ from time import Time
 
 constants {
     AUTH_TOKEN = "tdbdeimeu5hw7ei6mo3ugg5e0hvegxlqzvbmreiye5eedqq6xh47hgmxurch7iic",
-    PUSH_EVERY = 180000
+    PUSH_EVERY = 1000
 }
 
 service RomagnaTechConnector
@@ -32,9 +32,12 @@ service RomagnaTechConnector
     outputPort RomagnaTech {
         location: "socket://romagnatech.resiot.net:443/"
         protocol: https {
+            debug = true
+            compression = true
             format = "json"
             addHeader.header << "Authorization" { value = AUTH_TOKEN }   
-            osc.push << { alias = "endpoints/636f6e38" method = "post" }
+            osc.push.method = "post"
+            osc.push.alias = "endpoints/636f6e38" 
         }
         OneWay: push
     }
