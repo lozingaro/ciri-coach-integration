@@ -20,15 +20,26 @@
  *****************************************************************************/
 
 from file import File
-from time import Time
+from console import Console
 
 constants {
     AUTH_TOKEN = "tdbdeimeu5hw7ei6mo3ugg5e0hvegxlqzvbmreiye5eedqq6xh47hgmxurch7iic",
-    PUSH_EVERY = 5000
 }
 
-service RomagnaTechConnector
+interface ConnectorAPI {
+    OneWay: push( undefined )
+}
+
+service Connector
 {
+    execution: sequential
+
+    inputPort in {
+        location: "socket://localhost:8001/"
+        protocol: http
+        interfaces: ConnectorAPI
+    }
+
     outputPort RomagnaTech {
         location: "socket://romagnatech.resiot.net:443/"
         protocol: https {
@@ -39,23 +50,26 @@ service RomagnaTechConnector
             osc.push.method = "post"
             osc.push.alias = "endpoints/636f6e38" 
         }
-        OneWay: push
+        interfaces: ConnectorAPI
     }
 
 	embed File as File
-    embed Time as Time
+    embed Console as Console
+
+    init
+    {
+        global.i = 0
+        readFile@File( {
+            filename = "data/96perday.json"
+            format = "json"
+        } )( data )
+    }
 
 	main
 	{
-        readFile@File( {
-            filename = "data/items.json"
-            format = "json"
-        } )( data )
-
-        for ( item in data._ )
-        {
-            push@RomagnaTech( item )
-            sleep@Time( PUSH_EVERY )()
+        [ push() ] {
+            push@RomagnaTech( data._[global.i] )
+            global.i++
         }
     }
 }

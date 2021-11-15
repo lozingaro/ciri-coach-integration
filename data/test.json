@@ -1,0 +1,28 @@
+[
+    {
+      "_id": "6192496dbfc311f333ec2fca",
+      "index": 0,
+      "msg_from": "CIRI ICT",
+      "dev_id": 51,
+      "dev_desc": "Separatore MT",
+      "level": 18,
+      "level_unitid": "°C",
+      "pressure": 1.01,
+      "pressure_unitid": "bar",
+      "latitude": 44.14948,
+      "longitude": 12.23604
+    },
+    {
+      "_id": "6192496dace928cffd4d4918",
+      "index": 1,
+      "msg_from": "CIRI ICT",
+      "dev_id": 49,
+      "dev_desc": "Separatore BT",
+      "level": 11,
+      "level_unitid": "°C",
+      "pressure": 0.86,
+      "pressure_unitid": "bar",
+      "latitude": 44.14955,
+      "longitude": 12.23601
+    }
+  ]
