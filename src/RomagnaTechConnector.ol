@@ -27,7 +27,7 @@ constants {
 }
 
 interface ConnectorAPI {
-    OneWay: push( undefined )
+    RequestResponse: push( undefined )( void )
 }
 
 service Connector
@@ -67,8 +67,8 @@ service Connector
 
 	main
 	{
-        [ push() ] {
-            push@RomagnaTech( data._[global.i] )
+        [ push()() ] {
+            push@RomagnaTech( data._[global.i] )()
             global.i++
         }
     }
